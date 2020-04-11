@@ -1,5 +1,6 @@
 package com.biography.profile.model;
 
+import com.biography.profile.dto.ProfileDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -57,12 +58,23 @@ public class ProfileEntity {
     @UpdateTimestamp
     private Date updateAt;
 
-    public ProfileEntity(final String name, final Integer age, final String biography, final String email, final String contact) {
+    public ProfileEntity(final String name, final Integer age, final String biography,
+                         final String email, final String contact) {
         this.name = name;
         this.age = age;
         this.biography = biography;
         this.email = email;
         this.contact = contact;
+    }
+
+    public ProfileEntity merge(final ProfileDTO profileDTO) {
+        this.name = profileDTO.getName();
+        this.age = profileDTO.getAge();
+        this.biography = profileDTO.getBiography();
+        this.email = profileDTO.getEmail();
+
+        return this;
+
     }
 }
 

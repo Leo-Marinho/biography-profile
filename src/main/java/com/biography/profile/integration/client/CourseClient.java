@@ -11,5 +11,5 @@ import java.util.List;
 public interface CourseClient {
 
     @RequestMapping("/course/{name}")
-    List<CourseDTO> getCourse(@PathVariable String name );
+    List<CourseDTO> getCourse(@PathVariable final String name );
 }
