@@ -4,5 +4,5 @@ import com.biography.profile.dto.ProfileDTO;
 
 public interface ProfileService {
 
-    ProfileDTO findProfile(final Long id);
+    ProfileDTO findById(final Long id);
 }
