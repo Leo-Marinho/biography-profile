@@ -21,7 +21,7 @@ public class ProfileResource {
     private CourseClient courseClient;
 
     @GetMapping("/{id}")
-    private ProfileDTO searchProfile(final Long id){
+    private ProfileDTO searchProfile(@PathVariable final Long id){
 
        return profileService.findById(id);
     }

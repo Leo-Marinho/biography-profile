@@ -17,6 +17,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public ProfileDTO findById(final Long id) {
+
         log.info("M=getting Profile - Buscando Perfil");
 
         return profileRepository.findById(id)

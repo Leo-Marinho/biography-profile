@@ -2,6 +2,7 @@ package com.biography.profile.model;
 
 import com.biography.profile.dto.ProfileDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,41 +16,25 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
+@Entity
+@Builder
+@Table(name = "profile")
 @AllArgsConstructor
 @NoArgsConstructor
-
-@Entity
-@Table(name = "profile")
 public class ProfileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Name is invalid")
-    @NotEmpty(message = "Name is invalid")
-    @NotBlank(message = "Name is invalid")
-    @Size(min = 3, max = 70)
     private String name;
 
-    @NotNull(message = "age is invalid")
-    @NotBlank(message = "age is invalid")
-    @NotEmpty(message = "age is invalid")
     private Integer age;
 
-    @NotBlank(message = "Biography")
-    @NotEmpty(message = "Idade Invalida")
-    @Size(max = 300)
     private String biography;
 
-    @NotBlank(message = "Biography")
-    @NotEmpty(message = "Idade Invalida")
-    @Size(max = 150)
     private String email;
 
-    @NotBlank(message = "Biography")
-    @NotEmpty(message = "Idade Invalida")
-    @Size(max = 15)
     private String contact;
 
     @CreationTimestamp
