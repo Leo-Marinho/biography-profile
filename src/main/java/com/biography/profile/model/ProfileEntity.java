@@ -52,14 +52,8 @@ public class ProfileEntity {
         this.contact = contact;
     }
 
-    public ProfileEntity merge(final ProfileDTO profileDTO) {
-        this.name = profileDTO.getName();
-        this.age = profileDTO.getAge();
-        this.biography = profileDTO.getBiography();
-        this.email = profileDTO.getEmail();
-
-        return this;
-
+    public ProfileDTO toDTO(){
+        return new ProfileDTO(name, age, biography, email, contact);
     }
 }
 

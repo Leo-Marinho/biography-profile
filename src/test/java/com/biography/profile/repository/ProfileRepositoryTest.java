@@ -1,7 +1,7 @@
 package com.biography.profile.repository;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.biography.profile.BiographyProfileApplication;
@@ -26,10 +26,9 @@ class ProfileRepositoryTest {
     @DisplayName("Buscar perfil no repositório por id")
     @DataSet(value = "datasets/profile.yml", cleanBefore = true)
     void shouldFindProfileByid() {
-
         final var profile = profileRepository.findById(1L).orElseThrow(
                 () -> new NotFoundException("Perfil inexistente"));
 
-        assertAll("Asserts da consulta do perfil", () -> assertNull(profile));
+        assertAll("Asserts da consulta do perfil", () -> assertNotNull(profile));
     }
 }

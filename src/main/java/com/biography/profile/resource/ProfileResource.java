@@ -6,8 +6,10 @@ import com.biography.profile.integration.client.CourseClient;
 import com.biography.profile.resource.request.ProfileRequest;
 import com.biography.profile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,9 +35,10 @@ public class ProfileResource {
     }
 
     @PutMapping("/{id}")
-    private ProfileDTO update(@PathVariable Long id, @RequestBody ProfileRequest request){
-
+    @ResponseStatus(HttpStatus.OK)
+    private ProfileDTO update(@PathVariable Long id, @Valid @RequestBody final ProfileRequest request){
         final ProfileDTO profileDTO = request.toDTO();
+
         return profileService.update(id, profileDTO);
     }
 }
