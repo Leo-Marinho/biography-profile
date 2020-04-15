@@ -1,9 +1,5 @@
 package com.biography.profile.repository;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import com.biography.profile.BiographyProfileApplication;
 import com.biography.profile.exceptions.NotFoundException;
 import com.github.database.rider.core.api.dataset.DataSet;
@@ -12,6 +8,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @DisplayName("Teste de integração com repositorio")
@@ -30,5 +29,6 @@ class ProfileRepositoryTest {
                 () -> new NotFoundException("Perfil inexistente"));
 
         assertAll("Asserts da consulta do perfil", () -> assertNotNull(profile));
+        System.out.println(profile);
     }
 }

@@ -1,8 +1,5 @@
 package com.biography.profile;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import com.biography.profile.dto.ProfileDTO;
 import com.biography.profile.factory.ProfileFactory;
 import com.biography.profile.model.ProfileEntity;
@@ -10,7 +7,10 @@ import com.biography.profile.repository.ProfileRepository;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PerfilStepDefs extends BiographyProfileEntityApplicationTests {
 
@@ -42,6 +42,9 @@ public class PerfilStepDefs extends BiographyProfileEntityApplicationTests {
     @Então("^deve retornar o perfil cadastro$")
     public void deveRetornarOPerfilCadastro() {
         final var body = this.profileDTOResponse.getBody();
+        final var statusCode = this.profileDTOResponse.getStatusCode();
+
         assertAll("Assert em perfil response", () -> assertNotNull(body));
+        assertEquals(HttpStatus.OK,statusCode);
     }
 }
